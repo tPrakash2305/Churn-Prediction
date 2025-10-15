@@ -1,0 +1,23 @@
+# Models Directory
+
+This directory stores trained machine learning models and preprocessing pipelines.
+
+## Files Generated After Training:
+
+- `model.joblib` - Best performing model pipeline
+- `preproc.joblib` - Preprocessing pipeline (optional separate save)
+- `all_results.joblib` - All model training results for comparison
+
+## Usage:
+
+These files are automatically generated when you run:
+
+```
+python src/train.py
+```
+
+The Streamlit app loads the model from this directory to make predictions.
+
+---
+
+**Note:** Model files are large and excluded from version control via `.gitignore`

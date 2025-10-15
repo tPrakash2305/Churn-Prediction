@@ -1,0 +1,20 @@
+# Reports Directory
+
+This directory stores model evaluation reports, visualizations, and performance metrics.
+
+## Generated Files:
+
+- `model_comparison.csv` - Comparison of all trained models
+- `*_confusion_matrix.png` - Confusion matrix visualizations
+- `*_roc_curve.png` - ROC curve plots
+- `*_classification_report.txt` - Detailed classification reports
+
+## Usage:
+
+Reports are automatically generated during model training and evaluation.
+
+Run notebooks or training scripts to generate these reports.
+
+---
+
+**Note:** Large report files are excluded from version control via `.gitignore`
