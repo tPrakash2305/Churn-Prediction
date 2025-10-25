@@ -186,7 +186,7 @@ st.markdown("""
         color: white !important;
     }
     
-    /* Metric cards */
+    /* Metric cards with animated hover effects */
     .metric-card {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         padding: 1.5rem;
@@ -194,6 +194,33 @@ st.markdown("""
         color: white;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         text-align: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .metric-card::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+    }
+    
+    .metric-card:hover::after {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .metric-card:hover {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5), 0 0 20px rgba(118, 75, 162, 0.3);
     }
     
     /* Custom buttons */
@@ -228,7 +255,7 @@ st.markdown("""
         font-size: 1.2rem;
     }
     
-    /* Info boxes */
+    /* Info boxes with pop-up effects */
     .info-box {
         background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         padding: 1.5rem;
@@ -236,6 +263,13 @@ st.markdown("""
         color: white;
         margin: 1rem 0;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+    
+    .info-box:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(240, 147, 251, 0.5);
     }
     
     .success-box {
@@ -245,9 +279,16 @@ st.markdown("""
         color: white;
         margin: 1rem 0;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
     }
     
-    /* Card styling for dark theme */
+    .success-box:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(79, 172, 254, 0.5);
+    }
+    
+    /* Card styling for dark theme with professional hover effects */
     .card {
         background: rgba(40, 40, 60, 0.9);
         padding: 2rem;
@@ -255,18 +296,58 @@ st.markdown("""
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         margin: 1rem 0;
         border: 1px solid rgba(102, 126, 234, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .card:hover::before {
+        left: 100%;
+    }
+    
+    .card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4), 0 0 30px rgba(118, 75, 162, 0.3);
+        border: 1px solid rgba(102, 126, 234, 0.6);
+        background: rgba(50, 50, 70, 0.95);
     }
     
     .card h3, .card p, .card span {
         color: #e5e7eb !important;
+        transition: color 0.3s ease;
     }
     
-    /* Metric cards with better visibility */
+    .card:hover h3 {
+        color: #667eea !important;
+    }
+    
+    /* Metric cards with better visibility and hover effects */
     [data-testid="stMetric"] {
         background: rgba(40, 40, 60, 0.9);
         padding: 1rem;
         border-radius: 0.8rem;
         border: 1px solid rgba(102, 126, 234, 0.3);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+    
+    [data-testid="stMetric"]:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        border: 1px solid rgba(102, 126, 234, 0.6);
+        background: rgba(50, 50, 70, 0.95);
     }
     
     [data-testid="stMetricLabel"] {
@@ -298,10 +379,17 @@ st.markdown("""
         border: 1px solid rgba(102, 126, 234, 0.3) !important;
     }
     
-    /* Dataframe styling */
+    /* Dataframe styling with hover effects */
     .stDataFrame {
         background: rgba(40, 40, 60, 0.9);
         border-radius: 0.5rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+    
+    .stDataFrame:hover {
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        transform: scale(1.01);
     }
     
     .stDataFrame [data-testid="stDataFrameResizable"] {
@@ -318,19 +406,40 @@ st.markdown("""
         font-weight: 700;
     }
     
-    /* Expander styling for dark theme */
+    /* Expander styling for dark theme with hover animation */
     .streamlit-expanderHeader {
         background: rgba(40, 40, 60, 0.9) !important;
         border-radius: 0.5rem;
         font-weight: 600;
         color: #f9fafb !important;
         border: 1px solid rgba(102, 126, 234, 0.3);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+    
+    .streamlit-expanderHeader:hover {
+        background: rgba(50, 50, 70, 0.95) !important;
+        border: 1px solid rgba(102, 126, 234, 0.6);
+        transform: translateX(5px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
     }
     
     .streamlit-expanderContent {
         background: rgba(30, 30, 50, 0.8);
         border: 1px solid rgba(102, 126, 234, 0.2);
         color: #e5e7eb !important;
+        animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     
     /* Input fields */
@@ -338,7 +447,7 @@ st.markdown("""
         border-radius: 0.5rem;
     }
     
-    /* Tab styling */
+    /* Tab styling with hover effects */
     .stTabs [data-baseweb="tab-list"] {
         gap: 2rem;
     }
@@ -348,6 +457,18 @@ st.markdown("""
         border-radius: 0.5rem 0.5rem 0 0;
         font-weight: 600;
         font-size: 1.1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+    
+    .stTabs [data-baseweb="tab"]:hover {
+        transform: translateY(-3px);
+        background: rgba(102, 126, 234, 0.2);
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
     }
     
     /* Scrollbar styling for dark theme */
@@ -397,6 +518,107 @@ st.markdown("""
     .stTabs [data-baseweb="tab"][aria-selected="true"] {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white !important;
+    }
+    
+    /* Professional animations and effects */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes pulse {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+        }
+        50% {
+            box-shadow: 0 0 0 15px rgba(102, 126, 234, 0);
+        }
+    }
+    
+    @keyframes shimmer {
+        0% {
+            background-position: -1000px 0;
+        }
+        100% {
+            background-position: 1000px 0;
+        }
+    }
+    
+    /* Column hover effects */
+    [data-testid="column"] {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    [data-testid="column"]:hover {
+        background: rgba(102, 126, 234, 0.05);
+        transform: translateY(-3px);
+    }
+    
+    /* Image hover effects */
+    img {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0.5rem;
+    }
+    
+    img:hover {
+        transform: scale(1.05) rotate(2deg);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* Chart containers hover */
+    [data-testid="stPlotlyChart"] {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: rgba(40, 40, 60, 0.5);
+    }
+    
+    [data-testid="stPlotlyChart"]:hover {
+        background: rgba(50, 50, 70, 0.7);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        transform: scale(1.01);
+    }
+    
+    /* File uploader hover */
+    [data-testid="stFileUploader"] {
+        transition: all 0.3s ease;
+        border-radius: 0.5rem;
+    }
+    
+    [data-testid="stFileUploader"]:hover {
+        background: rgba(102, 126, 234, 0.1);
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+    }
+    
+    /* Alert boxes */
+    .stAlert {
+        border-radius: 0.8rem;
+        animation: fadeInUp 0.5s ease;
+        border-left: 4px solid #667eea;
+    }
+    
+    /* Progress bar animation */
+    .stProgress > div > div {
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
+        animation: shimmer 2s infinite;
+    }
+    
+    /* Success message animation */
+    .stSuccess {
+        animation: fadeInUp 0.5s ease, pulse 2s infinite;
+    }
+    
+    /* Loading spinner container */
+    .stSpinner > div {
+        border-color: #667eea !important;
     }
 </style>
 """, unsafe_allow_html=True)
