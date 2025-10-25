@@ -620,6 +620,32 @@ st.markdown("""
     .stSpinner > div {
         border-color: #667eea !important;
     }
+    
+    /* Disable hover effects for specific elements */
+    .no-hover,
+    .no-hover * {
+        transition: none !important;
+        cursor: default !important;
+        pointer-events: none !important;
+    }
+    
+    .no-hover:hover,
+    .no-hover *:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        scale: 1 !important;
+    }
+    
+    /* Specifically target matplotlib/seaborn chart images */
+    .element-container:has(.no-hover) img {
+        transition: none !important;
+        pointer-events: none !important;
+    }
+    
+    .element-container:has(.no-hover) img:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -967,11 +993,31 @@ def eda_page():
     if len(numeric_cols) > 1:
         corr_matrix = df[numeric_cols].corr()
         
-        fig, ax = plt.subplots(figsize=(10, 8))
-        sns.heatmap(corr_matrix, annot=True, fmt='.2f', cmap='coolwarm', center=0,
-                   square=True, linewidths=1, ax=ax)
-        ax.set_title('Feature Correlation Matrix')
-        st.pyplot(fig)
+        # Use Plotly heatmap to match other charts (no hover effects)
+        fig = go.Figure(data=go.Heatmap(
+            z=corr_matrix.values,
+            x=corr_matrix.columns,
+            y=corr_matrix.columns,
+            colorscale='RdBu',
+            zmid=0,
+            text=corr_matrix.values.round(2),
+            texttemplate='%{text}',
+            textfont={"size": 10},
+            hoverinfo='skip',  # Disable hover
+            colorbar=dict(title="Correlation")
+        ))
+        
+        fig.update_layout(
+            title='Feature Correlation Matrix',
+            title_font_size=14,
+            xaxis_title='',
+            yaxis_title='',
+            height=500,
+            margin=dict(l=100, r=50, t=80, b=100)
+        )
+        
+        # Use same container width as other Plotly charts
+        st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
 
 
 def predict_page():
