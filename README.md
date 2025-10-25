@@ -1,4 +1,4 @@
-# 📊 Telecom Customer Churn Prediction System
+# Telecom Customer Churn Prediction System
 
 A comprehensive machine learning project for predicting customer churn in telecom industry using advanced analytics, multiple ML models, and an interactive Streamlit dashboard.
 
@@ -12,7 +12,7 @@ This project implements a complete end-to-end machine learning pipeline for cust
 - Interactive web dashboard for business users
 - Batch prediction capabilities
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 telco-churn-project/
@@ -37,7 +37,7 @@ telco-churn-project/
 └── README.md
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone or Download the Project
 
@@ -208,7 +208,7 @@ The system includes a professional, production-ready web dashboard built with St
 - **Security**: No data persistence, session-based processing
 - **Performance**: <2 second prediction time for batch processing
 
-## 🔧 Technical Stack
+## Technical Stack
 
 - **Python**: 3.9+
 - **Data Processing**: pandas, numpy
@@ -219,7 +219,7 @@ The system includes a professional, production-ready web dashboard built with St
 - **Web Framework**: Streamlit
 - **Model Persistence**: joblib
 
-## 📈 Model Performance
+## Model Performance
 
 The system trains and compares three models:
 
@@ -235,14 +235,14 @@ Evaluation metrics include:
 - ROC-AUC Score
 - Confusion Matrix
 
-## 🎓 Use Cases
+## Use Cases
 
 - **Customer Retention**: Identify at-risk customers proactively
 - **Marketing Strategy**: Target retention campaigns effectively
 - **Revenue Protection**: Reduce churn-related revenue loss
 - **Business Intelligence**: Understand factors driving customer attrition
 
-## 📝 Dataset Information
+## Dataset Information
 
 The Telco Customer Churn dataset contains:
 
@@ -257,7 +257,7 @@ Key features:
 - Account information (tenure, contract type, payment method)
 - Charges (monthly, total)
 
-## 🔍 Feature Engineering
+## Feature Engineering
 
 The pipeline includes:
 
@@ -267,7 +267,7 @@ The pipeline includes:
 - **Encoding**: One-hot encoding for categorical variables
 - **Scaling**: StandardScaler for numerical features
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to enhance this project by:
 
@@ -276,11 +276,11 @@ Feel free to enhance this project by:
 - Enhancing the dashboard UI
 - Adding more feature engineering techniques
 
-## 📄 License
+## License
 
 This project is for educational and demonstration purposes.
 
-## 👨‍💻 Author
+## Author
 
 Created as part of Data Mining and Business Intelligence Mini Project
 
