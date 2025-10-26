@@ -159,28 +159,33 @@ st.markdown("""
         color: #f0f0f0 !important;
     }
     
-    /* Sidebar radio buttons with purple accent */
+    /* Sidebar radio buttons - exact match to technology stack boxes */
     [data-testid="stSidebar"] [role="radiogroup"] label {
-        background: rgba(102, 126, 234, 0.1);
-        padding: 0.75rem 1rem;
-        border-radius: 0.5rem;
-        margin: 0.25rem 0;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 1rem 1.2rem !important;
+        border-radius: 0.6rem;
+        margin: 0.5rem 0;
         transition: all 0.3s ease;
         cursor: pointer;
-        border-left: 3px solid transparent;
+        border-left: 4px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        font-size: 0.95rem;
+        font-weight: 500;
     }
     
     [data-testid="stSidebar"] [role="radiogroup"] label:hover {
-        background: rgba(102, 126, 234, 0.2);
-        transform: translateX(5px);
-        border-left: 3px solid #667eea;
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateX(3px);
+        border-left: 4px solid rgba(102, 126, 234, 0.8);
+        box-shadow: 0 4px 10px rgba(102, 126, 234, 0.15);
     }
     
     [data-testid="stSidebar"] [role="radiogroup"] [data-checked="true"] {
-        background: rgba(102, 126, 234, 0.3);
+        background: rgba(255, 255, 255, 0.15);
         font-weight: 600;
-        border-left: 3px solid #667eea;
-        box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+        border-left: 4px solid #667eea;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
     }
     
     /* Sidebar markdown content */
