@@ -134,14 +134,15 @@ st.markdown("""
         line-height: 1.6;
     }
     
-    /* Sidebar enhanced styling */
+    /* Sidebar seamlessly matching main background */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%) !important;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
         box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+        border-right: 1px solid rgba(102, 126, 234, 0.2);
     }
     
     [data-testid="stSidebar"] > div:first-child {
-        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     }
     
     /* Sidebar text styling - all white */
@@ -158,24 +159,28 @@ st.markdown("""
         color: #f0f0f0 !important;
     }
     
-    /* Sidebar radio buttons */
+    /* Sidebar radio buttons with purple accent */
     [data-testid="stSidebar"] [role="radiogroup"] label {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(102, 126, 234, 0.1);
         padding: 0.75rem 1rem;
         border-radius: 0.5rem;
         margin: 0.25rem 0;
         transition: all 0.3s ease;
         cursor: pointer;
+        border-left: 3px solid transparent;
     }
     
     [data-testid="stSidebar"] [role="radiogroup"] label:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(102, 126, 234, 0.2);
         transform: translateX(5px);
+        border-left: 3px solid #667eea;
     }
     
     [data-testid="stSidebar"] [role="radiogroup"] [data-checked="true"] {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(102, 126, 234, 0.3);
         font-weight: 600;
+        border-left: 3px solid #667eea;
+        box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
     }
     
     /* Sidebar markdown content */
