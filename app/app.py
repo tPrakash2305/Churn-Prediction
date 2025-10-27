@@ -26,7 +26,12 @@ st.set_page_config(
     page_title="Customer Churn Prediction",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': None
+    }
 )
 
 # Custom CSS for enhanced UI with Font Awesome icons
@@ -406,9 +411,12 @@ st.markdown("""
         color: #e5e7eb !important;
     }
     
-    /* Hide Streamlit branding */
+    /* Hide Streamlit branding and deploy button */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    header {visibility: hidden;}
+    .stDeployButton {display: none;}
+    [data-testid="stToolbar"] {display: none;}
     
     /* Metric improvements */
     [data-testid="stMetricValue"] {
