@@ -167,7 +167,7 @@ st.markdown("""
     /* Sidebar radio buttons - exact match to technology stack boxes */
     [data-testid="stSidebar"] [role="radiogroup"] label {
         background: rgba(255, 255, 255, 0.08);
-        padding: 1rem 1.2rem !important;
+        padding: 1.2rem 1.5rem !important;
         border-radius: 0.6rem;
         margin: 0.5rem 0;
         transition: all 0.3s ease;
@@ -175,8 +175,10 @@ st.markdown("""
         border-left: 4px solid rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(10px);
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        font-size: 0.95rem;
-        font-weight: 500;
+        font-size: 1.25rem !important;
+        font-weight: 600 !important;
+        font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
+        letter-spacing: 0.5px;
     }
     
     [data-testid="stSidebar"] [role="radiogroup"] label:hover {
@@ -188,7 +190,7 @@ st.markdown("""
     
     [data-testid="stSidebar"] [role="radiogroup"] [data-checked="true"] {
         background: rgba(255, 255, 255, 0.15);
-        font-weight: 600;
+        font-weight: 700 !important;
         border-left: 4px solid #667eea;
         box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
     }
@@ -427,12 +429,16 @@ st.markdown("""
     /* Expander styling for dark theme with hover animation */
     .streamlit-expanderHeader {
         background: rgba(40, 40, 60, 0.9) !important;
-        border-radius: 0.5rem;
-        font-weight: 600;
+        border-radius: 0.8rem;
+        font-weight: 600 !important;
+        font-size: 1.3rem !important;
         color: #f9fafb !important;
         border: 1px solid rgba(102, 126, 234, 0.3);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
+        font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
+        padding: 1.2rem 1.5rem !important;
+        letter-spacing: 0.5px;
     }
     
     .streamlit-expanderHeader:hover {
@@ -447,6 +453,8 @@ st.markdown("""
         border: 1px solid rgba(102, 126, 234, 0.2);
         color: #e5e7eb !important;
         animation: slideDown 0.3s ease;
+        font-size: 1.15rem !important;
+        font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
     }
     
     @keyframes slideDown {
@@ -460,9 +468,90 @@ st.markdown("""
         }
     }
     
-    /* Input fields */
+    /* Input fields - selectbox and other inputs */
     .stSelectbox, .stNumberInput {
-        border-radius: 0.5rem;
+        border-radius: 0.8rem;
+    }
+    
+    .stSelectbox label, .stNumberInput label, .stTextInput label {
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
+        letter-spacing: 0.3px;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .stSelectbox > div > div, .stNumberInput > div > div, .stTextInput > div > div {
+        font-size: 1.15rem !important;
+        font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
+    }
+    
+    /* Main content area radio buttons (Prediction Mode Selection) */
+    .main [role="radiogroup"] label {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+        padding: 1.5rem 2rem !important;
+        border-radius: 1rem;
+        margin: 0.8rem 0.5rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        border: 2px solid rgba(102, 126, 234, 0.3);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-size: 1.35rem !important;
+        font-weight: 700 !important;
+        font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
+        letter-spacing: 0.5px;
+        color: #f9fafb !important;
+    }
+    
+    .main [role="radiogroup"] label:hover {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.25) 0%, rgba(118, 75, 162, 0.25) 100%);
+        transform: translateY(-5px) scale(1.02);
+        border: 2px solid rgba(102, 126, 234, 0.6);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+    
+    .main [role="radiogroup"] [data-checked="true"] {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        border: 2px solid #667eea;
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+        transform: scale(1.05);
+        color: white !important;
+    }
+    
+    /* Radio button label text */
+    .main [role="radiogroup"] p {
+        font-size: 1.35rem !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+    }
+    
+    /* Expander specific enhancements */
+    .streamlit-expanderHeader svg {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+    }
+    
+    div[data-testid="stExpander"] {
+        border: 2px solid rgba(102, 126, 234, 0.3);
+        border-radius: 1rem;
+        background: rgba(40, 40, 60, 0.6);
+        margin: 1rem 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    div[data-testid="stExpander"]:hover {
+        border: 2px solid rgba(102, 126, 234, 0.5);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+    }
+    
+    /* Enhanced View Sample Data expander */
+    div[data-testid="stExpander"]:has(summary:contains("View Sample Data")) .streamlit-expanderHeader,
+    div[data-testid="stExpander"] .streamlit-expanderHeader p {
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.5px !important;
+        padding: 1rem 1.5rem !important;
     }
     
     /* Tab styling with hover effects */
@@ -1048,10 +1137,34 @@ def predict_page():
         return
     
     # Prediction mode selection
+    st.markdown("""
+    <div style="
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+        padding: 2rem;
+        border-radius: 1.2rem;
+        margin: 2rem 0;
+        border: 2px solid rgba(102, 126, 234, 0.4);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    ">
+        <h2 style="
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #f9fafb;
+            margin-bottom: 1.5rem;
+            font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif;
+            letter-spacing: 0.5px;
+            text-align: center;
+        ">
+            ⚡ Select Your Prediction Mode
+        </h2>
+    </div>
+    """, unsafe_allow_html=True)
+    
     prediction_mode = st.radio(
         "Select Prediction Mode:",
         ["Single Customer Prediction", "Batch Prediction (Upload CSV)"],
-        horizontal=True
+        horizontal=True,
+        label_visibility="collapsed"
     )
     
     if prediction_mode == "Single Customer Prediction":
