@@ -420,6 +420,38 @@ st.markdown("""
     .stDeployButton {display: none;}
     [data-testid="stToolbar"] {display: none;}
     
+    /* Custom box-style buttons for prediction mode */
+    button[key="single_pred"], button[key="batch_pred"],
+    button[data-testid="baseButton-primary"] {
+        background: linear-gradient(135deg, rgba(30, 30, 50, 0.95) 0%, rgba(40, 40, 60, 0.95) 100%) !important;
+        border: 4px solid rgba(102, 126, 234, 0.6) !important;
+        border-radius: 1.5rem !important;
+        padding: 3rem 2rem !important;
+        min-height: 150px !important;
+        font-size: 1.6rem !important;
+        font-weight: 700 !important;
+        font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
+        letter-spacing: 0.8px !important;
+        color: #f9fafb !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    button[data-testid="baseButton-primary"]:hover {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 100%) !important;
+        transform: translateY(-10px) scale(1.05) !important;
+        border: 4px solid rgba(102, 126, 234, 0.9) !important;
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    button[data-testid="baseButton-primary"]:active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        transform: scale(1.08) !important;
+        border: 4px solid #8b9bff !important;
+        box-shadow: 0 15px 50px rgba(102, 126, 234, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    }
+    
     /* Metric improvements */
     [data-testid="stMetricValue"] {
         font-size: 2rem;
@@ -489,83 +521,114 @@ st.markdown("""
     /* Main content area radio buttons (Prediction Mode Selection) */
     .main [role="radiogroup"] {
         display: flex !important;
-        gap: 1.5rem !important;
-        margin: 1.5rem 0 !important;
-    }
-    
-    .main [role="radiogroup"] label {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-        padding: 2rem 2.5rem !important;
-        border-radius: 1.2rem;
-        margin: 0 !important;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-        border: 3px solid rgba(102, 126, 234, 0.4);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        font-size: 1.4rem !important;
-        font-weight: 700 !important;
-        font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
-        letter-spacing: 0.5px;
-        color: #f9fafb !important;
-        flex: 1;
-        text-align: center;
-        min-height: 100px;
-        display: flex !important;
-        align-items: center !important;
+        gap: 2rem !important;
+        margin: 2rem 0 !important;
         justify-content: center !important;
     }
     
+    .main [role="radiogroup"] label {
+        background: linear-gradient(135deg, rgba(30, 30, 50, 0.95) 0%, rgba(40, 40, 60, 0.95) 100%);
+        padding: 2.5rem 3rem !important;
+        border-radius: 1.5rem;
+        margin: 0 !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        border: 4px solid rgba(102, 126, 234, 0.5);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
+        letter-spacing: 0.8px;
+        color: #f9fafb !important;
+        flex: 1;
+        max-width: 400px;
+        text-align: center;
+        min-height: 140px;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .main [role="radiogroup"] label::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+        border-radius: 1.5rem;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    
     .main [role="radiogroup"] label:hover {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.35) 0%, rgba(118, 75, 162, 0.35) 100%);
-        transform: translateY(-8px) scale(1.03);
-        border: 3px solid rgba(102, 126, 234, 0.7);
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+        transform: translateY(-10px) scale(1.05);
+        border: 4px solid rgba(102, 126, 234, 0.8);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .main [role="radiogroup"] label:hover::before {
+        opacity: 1;
     }
     
     .main [role="radiogroup"] [data-checked="true"] {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-        border: 3px solid #667eea !important;
-        box-shadow: 0 10px 35px rgba(102, 126, 234, 0.6) !important;
-        transform: scale(1.08) !important;
+        border: 4px solid #8b9bff !important;
+        box-shadow: 0 15px 50px rgba(102, 126, 234, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+        transform: scale(1.1) !important;
         color: white !important;
     }
     
     /* Radio button label text */
     .main [role="radiogroup"] p {
-        font-size: 1.4rem !important;
+        font-size: 1.5rem !important;
         font-weight: 700 !important;
         margin: 0 !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     
     /* Expander specific enhancements */
     .streamlit-expanderHeader svg {
-        width: 2rem !important;
-        height: 2rem !important;
+        width: 4rem !important;
+        height: 4rem !important;
     }
     
     div[data-testid="stExpander"] {
-        border: 2px solid rgba(102, 126, 234, 0.3);
-        border-radius: 1rem;
-        background: rgba(40, 40, 60, 0.6);
-        margin: 1rem 0;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border: 4px solid rgba(102, 126, 234, 0.5);
+        border-radius: 1.5rem;
+        background: rgba(40, 40, 60, 0.8);
+        margin: 2rem 0;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     }
     
     div[data-testid="stExpander"]:hover {
-        border: 2px solid rgba(102, 126, 234, 0.5);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+        border: 4px solid rgba(102, 126, 234, 0.7);
+        box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        transform: translateY(-3px);
+        transition: all 0.3s ease;
     }
     
     /* Enhanced expander headers - especially View Sample Data */
     .streamlit-expanderHeader p {
-        font-size: 2.5rem !important;
+        font-size: 5rem !important;
         font-weight: 700 !important;
-        letter-spacing: 0.5px !important;
+        letter-spacing: 0.8px !important;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
     }
     
     .streamlit-expanderHeader {
-        padding: 1.5rem 2rem !important;
+        padding: 2.5rem 3rem !important;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+    }
+    
+    .streamlit-expanderHeader:hover {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.25) 0%, rgba(118, 75, 162, 0.25) 100%);
     }
     
     /* Tab styling with hover effects */
@@ -1174,14 +1237,32 @@ def predict_page():
     </div>
     """, unsafe_allow_html=True)
     
-    prediction_mode = st.radio(
-        "Select Prediction Mode:",
-        ["Single Customer Prediction", "Batch Prediction (Upload CSV)"],
-        horizontal=True,
-        label_visibility="collapsed"
-    )
+    # Custom box-style selection using columns
+    st.markdown("""
+    <style>
+    div[data-testid="column"] > div {
+        height: 100%;
+    }
+    </style>
+    """, unsafe_allow_html=True)
     
-    if prediction_mode == "Single Customer Prediction":
+    col1, col2 = st.columns(2, gap="large")
+    
+    with col1:
+        if st.button("👤 Single Customer Prediction", key="single_pred", use_container_width=True, type="primary"):
+            st.session_state.prediction_mode = "single"
+    
+    with col2:
+        if st.button("📊 Batch Prediction (Upload CSV)", key="batch_pred", use_container_width=True, type="primary"):
+            st.session_state.prediction_mode = "batch"
+    
+    # Initialize session state if not exists
+    if 'prediction_mode' not in st.session_state:
+        st.session_state.prediction_mode = "single"
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    if st.session_state.prediction_mode == "single":
         single_customer_prediction(pipeline)
     else:
         batch_prediction(pipeline)
