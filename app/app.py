@@ -24,7 +24,7 @@ from features import engineer_features
 # Page configuration
 st.set_page_config(
     page_title="Customer Churn Prediction",
-    page_icon="📊",
+    page_icon="◈",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
@@ -844,7 +844,7 @@ def home_page():
         st.markdown("<br><br>", unsafe_allow_html=True)
         
         # Show sample data
-        with st.expander("📋 View Sample Data", expanded=False):
+        with st.expander("▣ View Sample Data", expanded=False):
             st.dataframe(df.head(10), use_container_width=True)
         
         # Key insights with gradient backgrounds
@@ -922,7 +922,7 @@ def eda_page():
         return
     
     # Churn distribution
-    st.markdown('<h2 class="sub-header">🎯 Churn Distribution</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header"><i class="fas fa-bullseye icon"></i>Churn Distribution</h2>', unsafe_allow_html=True)
     
     if 'Churn' in df.columns:
         col1, col2 = st.columns(2)
@@ -945,7 +945,7 @@ def eda_page():
             st.plotly_chart(fig, use_container_width=True)
     
     # Churn by categorical features
-    st.markdown('<h2 class="sub-header">📈 Churn by Features</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header"><i class="fas fa-chart-line icon"></i>Churn by Features</h2>', unsafe_allow_html=True)
     
     categorical_features = ['Contract', 'InternetService', 'PaymentMethod', 'gender']
     available_features = [f for f in categorical_features if f in df.columns]
@@ -978,7 +978,7 @@ def eda_page():
             st.plotly_chart(fig, use_container_width=True)
     
     # Numerical features
-    st.markdown('<h2 class="sub-header">💰 Numerical Features Analysis</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header"><i class="fas fa-dollar-sign icon"></i>Numerical Features Analysis</h2>', unsafe_allow_html=True)
     
     numerical_features = ['tenure', 'MonthlyCharges', 'TotalCharges']
     available_num_features = [f for f in numerical_features if f in df.columns]
@@ -1005,7 +1005,7 @@ def eda_page():
             st.plotly_chart(fig, use_container_width=True)
     
     # Correlation heatmap
-    st.markdown('<h2 class="sub-header">🔥 Feature Correlations</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header"><i class="fas fa-fire icon"></i>Feature Correlations</h2>', unsafe_allow_html=True)
     
     numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
     if len(numeric_cols) > 1:
@@ -1040,7 +1040,7 @@ def eda_page():
 
 def predict_page():
     """Display the prediction page."""
-    st.markdown('<h1 class="main-header">🔮 Predict Customer Churn</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header"><i class="fas fa-magic"></i> Predict Customer Churn</h1>', unsafe_allow_html=True)
     
     # Load model
     pipeline = load_model()
@@ -1062,9 +1062,9 @@ def predict_page():
 
 def single_customer_prediction(pipeline):
     """Handle single customer prediction."""
-    st.markdown('<h2 class="sub-header">👤 Enter Customer Details</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header"><i class="fas fa-user icon"></i>Enter Customer Details</h2>', unsafe_allow_html=True)
     
-    st.info("💡 Fill in the customer information below to predict churn probability")
+    st.info("ⓘ Fill in the customer information below to predict churn probability")
     
     # Create input form with better organization
     with st.form("prediction_form"):
@@ -1121,7 +1121,7 @@ def single_customer_prediction(pipeline):
                                           ["Electronic check", "Mailed check", 
                                            "Bank transfer (automatic)", "Credit card (automatic)"])
         
-        st.markdown("### 💰 Financial Details")
+        st.markdown("### <i class='fas fa-money-bill-wave'></i> Financial Details", unsafe_allow_html=True)
         col1, col2, col3 = st.columns(3)
         
         with col1:
@@ -1133,7 +1133,7 @@ def single_customer_prediction(pipeline):
                                             value=float(tenure * monthly_charges), step=1.0)
         
         # Submit button
-        submitted = st.form_submit_button("🔮 Predict Churn", use_container_width=True, type="primary")
+        submitted = st.form_submit_button("⚡ Predict Churn", use_container_width=True, type="primary")
     
     if submitted:
         # Prepare input
@@ -1151,7 +1151,7 @@ def single_customer_prediction(pipeline):
             result = predict_single(pipeline, customer_df)
         
         # Display results with enhanced styling
-        st.markdown('<h2 class="sub-header">📊 Prediction Results</h2>', unsafe_allow_html=True)
+        st.markdown('<h2 class="sub-header"><i class="fas fa-chart-pie icon"></i>Prediction Results</h2>', unsafe_allow_html=True)
         
         # Main result card
         prediction_color = "#ef4444" if result['prediction'] == "Churn" else "#10b981"
@@ -1240,7 +1240,7 @@ def single_customer_prediction(pipeline):
         st.plotly_chart(fig, use_container_width=True)
         
         # Recommendations
-        st.markdown('<h2 class="sub-header">💡 Recommended Actions</h2>', unsafe_allow_html=True)
+        st.markdown('<h2 class="sub-header"><i class="fas fa-lightbulb icon"></i>Recommended Actions</h2>', unsafe_allow_html=True)
         
         if result['churn_probability'] > 0.7:
             st.markdown("""
@@ -1291,7 +1291,7 @@ def single_customer_prediction(pipeline):
 
 def batch_prediction(pipeline):
     """Handle batch prediction from CSV upload."""
-    st.markdown('<h2 class="sub-header">📁 Upload Customer Data</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header"><i class="fas fa-upload icon"></i>Upload Customer Data</h2>', unsafe_allow_html=True)
     
     st.info("""
     **Instructions:**
@@ -1308,10 +1308,10 @@ def batch_prediction(pipeline):
         
         st.success(f"✅ File uploaded successfully! {len(df)} customers found.")
         
-        with st.expander("📋 Preview uploaded data"):
+        with st.expander("▣ Preview uploaded data"):
             st.dataframe(df.head(), use_container_width=True)
         
-        if st.button("🔮 Generate Predictions", type="primary"):
+        if st.button("⚡ Generate Predictions", type="primary"):
             with st.spinner("Generating predictions..."):
                 # Apply feature engineering
                 df_engineered = engineer_features(df)
@@ -1326,7 +1326,7 @@ def batch_prediction(pipeline):
                 predictions_df = predict_batch(pipeline, df_features)
                 
                 # Display results
-                st.markdown('<h2 class="sub-header">📊 Prediction Results</h2>', unsafe_allow_html=True)
+                st.markdown('<h2 class="sub-header"><i class="fas fa-chart-pie icon"></i>Prediction Results</h2>', unsafe_allow_html=True)
                 
                 col1, col2, col3 = st.columns(3)
                 
@@ -1343,7 +1343,7 @@ def batch_prediction(pipeline):
                     st.metric("Avg Churn Probability", f"{avg_prob:.1f}%")
                 
                 # Show predictions
-                with st.expander("📋 View All Predictions"):
+                with st.expander("▣ View All Predictions"):
                     st.dataframe(predictions_df, use_container_width=True)
                 
                 # Download button
@@ -1357,7 +1357,7 @@ def batch_prediction(pipeline):
                 )
                 
                 # Visualization
-                st.markdown('<h2 class="sub-header">📈 Prediction Distribution</h2>', unsafe_allow_html=True)
+                st.markdown('<h2 class="sub-header"><i class="fas fa-chart-area icon"></i>Prediction Distribution</h2>', unsafe_allow_html=True)
                 
                 col1, col2 = st.columns(2)
                 
@@ -1376,7 +1376,7 @@ def batch_prediction(pipeline):
 
 def model_performance_page():
     """Display model performance metrics."""
-    st.markdown('<h1 class="main-header">📈 Model Performance</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header"><i class="fas fa-chart-line"></i> Model Performance</h1>', unsafe_allow_html=True)
     
     try:
         # Load results
@@ -1462,10 +1462,10 @@ def main():
             ["Home", "Exploratory Analysis", "Predict Churn", "Model Performance"],
             label_visibility="collapsed",
             format_func=lambda x: {
-                "Home": "🏠 Home",
-                "Exploratory Analysis": "📊 Exploratory Analysis", 
-                "Predict Churn": "🔮 Predict Churn",
-                "Model Performance": "📈 Model Performance"
+                "Home": "⌂ Home",
+                "Exploratory Analysis": "◈ Exploratory Analysis", 
+                "Predict Churn": "◉ Predict Churn",
+                "Model Performance": "▲ Model Performance"
             }[x]
         )
         
