@@ -487,49 +487,61 @@ st.markdown("""
     }
     
     /* Main content area radio buttons (Prediction Mode Selection) */
+    .main [role="radiogroup"] {
+        display: flex !important;
+        gap: 1.5rem !important;
+        margin: 1.5rem 0 !important;
+    }
+    
     .main [role="radiogroup"] label {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
-        padding: 1.5rem 2rem !important;
-        border-radius: 1rem;
-        margin: 0.8rem 0.5rem;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+        padding: 2rem 2.5rem !important;
+        border-radius: 1.2rem;
+        margin: 0 !important;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
-        border: 2px solid rgba(102, 126, 234, 0.3);
+        border: 3px solid rgba(102, 126, 234, 0.4);
         backdrop-filter: blur(10px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        font-size: 1.35rem !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        font-size: 1.4rem !important;
         font-weight: 700 !important;
         font-family: 'Quicksand', 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif !important;
         letter-spacing: 0.5px;
         color: #f9fafb !important;
+        flex: 1;
+        text-align: center;
+        min-height: 100px;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     
     .main [role="radiogroup"] label:hover {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.25) 0%, rgba(118, 75, 162, 0.25) 100%);
-        transform: translateY(-5px) scale(1.02);
-        border: 2px solid rgba(102, 126, 234, 0.6);
-        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.35) 0%, rgba(118, 75, 162, 0.35) 100%);
+        transform: translateY(-8px) scale(1.03);
+        border: 3px solid rgba(102, 126, 234, 0.7);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
     }
     
     .main [role="radiogroup"] [data-checked="true"] {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-        border: 2px solid #667eea;
-        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
-        transform: scale(1.05);
+        border: 3px solid #667eea !important;
+        box-shadow: 0 10px 35px rgba(102, 126, 234, 0.6) !important;
+        transform: scale(1.08) !important;
         color: white !important;
     }
     
     /* Radio button label text */
     .main [role="radiogroup"] p {
-        font-size: 1.35rem !important;
+        font-size: 1.4rem !important;
         font-weight: 700 !important;
         margin: 0 !important;
     }
     
     /* Expander specific enhancements */
     .streamlit-expanderHeader svg {
-        width: 1.5rem !important;
-        height: 1.5rem !important;
+        width: 2rem !important;
+        height: 2rem !important;
     }
     
     div[data-testid="stExpander"] {
@@ -545,13 +557,15 @@ st.markdown("""
         box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
     }
     
-    /* Enhanced View Sample Data expander */
-    div[data-testid="stExpander"]:has(summary:contains("View Sample Data")) .streamlit-expanderHeader,
-    div[data-testid="stExpander"] .streamlit-expanderHeader p {
-        font-size: 1.5rem !important;
+    /* Enhanced expander headers - especially View Sample Data */
+    .streamlit-expanderHeader p {
+        font-size: 2.5rem !important;
         font-weight: 700 !important;
         letter-spacing: 0.5px !important;
-        padding: 1rem 1.5rem !important;
+    }
+    
+    .streamlit-expanderHeader {
+        padding: 1.5rem 2rem !important;
     }
     
     /* Tab styling with hover effects */
